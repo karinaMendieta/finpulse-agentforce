@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FinPulse AgentForce</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="chat-container">
+
+        <div class="chat-header">
+
+            <h1>FinPulse AgentForce</h1>
+
+            <p>
+                El experto en Ventas Financieras
+            </p>
+
+        </div>
+
+        <div class="chat-box" id="chatBox">
+
+            <div class="message bot">
+
+                Hola 👋 Soy FinPulse AgentForce.
+
+                ¿Cómo puedo ayudarte hoy?
+
+            </div>
+
+        </div>
+
+        <div class="input-area">
+
+            <input
+                type="text"
+                id="userInput"
+                placeholder="Escribe una pregunta..."
+            >
+
+            <button onclick="sendMessage()">
+                Enviar
+            </button>
+
+        </div>
+
+    </div>
+
+<script>
+
+function sendMessage(){
+
+    let input = document.getElementById("userInput");
+
+    let message = input.value;
+
+    if(message.trim() === ""){
+        return;
+    }
+
+    let chatBox = document.getElementById("chatBox");
+
+    // MENSAJE USUARIO
+    let userMessage = document.createElement("div");
+
+    userMessage.className = "message user";
+
+    userMessage.innerText = message;
+
+    chatBox.appendChild(userMessage);
+
+    // RESPUESTA IA
+    let botMessage = document.createElement("div");
+
+    botMessage.className = "message bot";
+
+    let response = "";
+
+    if(message.toLowerCase().includes("oportunidades")){
+
+        response =
+        "Actualmente existen 3 oportunidades prioritarias con alta probabilidad de cierre esta semana.";
+
+    }
+
+    else if(message.toLowerCase().includes("forecast")){
+
+        response =
+        "El forecast trimestral proyecta un crecimiento del 18% en inversiones.";
+
+    }
+
+    else if(message.toLowerCase().includes("clientes")){
+
+        response =
+        "Los clientes con mayor potencial son Grupo Bimbo, Nissan y Safran.";
+
+    }
+
+    else{
+
+        response =
+        "AgentForce está procesando tu solicitud y analizando información comercial en Salesforce.";
+
+    }
+
+    setTimeout(() => {
+
+        botMessage.innerText = response;
+
+        chatBox.appendChild(botMessage);
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+    },1000);
+
+    input.value = "";
+
+}
+
+</script>
+
+</body>
+
+</html>
